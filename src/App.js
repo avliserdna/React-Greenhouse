@@ -3,10 +3,12 @@ import Greenhouse from "./components/Greenhouse";
 import Navigation from "./components/Navigation";
 import Thermometer from "./components/Thermometer";
 import Hygrometer from "./components/Hygrometer";
+import ClimateProvider from "./context/ClimateContext";
 
 function App() {
   return (
     <>
+    {/* <ClimateProvider> */}
       <Navigation />
       <Switch>
         <Route path="/thermometer">
@@ -19,6 +21,7 @@ function App() {
           <Greenhouse />
         </Route>
       </Switch>
+    {/* </ClimateProvider> */}
     </>
   );
 }
