@@ -1,8 +1,17 @@
 import ReactSlider from "react-slider";
 import "./Hygrometer.css";
 import { useClimate } from "../../context/ClimateContext";
+import { useEffect } from 'react'
 function Hygrometer() {
   const { humidity, setHumidity } = useClimate()
+  useEffect(() => {
+    const humidityDecrease = setTimeout(() => {
+      setHumidity(humidity - 1)
+    }, 10000)
+    return function cleanup() {
+      clearTimeout(humidityDecrease)
+    }
+  })
   return (
     <section>
       <h2>Hygrometer</h2>

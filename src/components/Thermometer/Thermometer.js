@@ -1,9 +1,18 @@
 import ReactSlider from "react-slider";
 import './Thermometer.css';
 import { useClimate } from "../../context/ClimateContext";
+import { useEffect } from 'react'
 
 function Thermometer() {
   const { temperature, setTemperature } = useClimate();
+  useEffect(() => {
+    const temperatureIncrease = setTimeout(() => {
+      setTemperature(temperature + 1)
+    }, 10000)
+    return function cleanup() {
+      clearTimeout(temperatureIncrease)
+    }
+  })
   return (
     <section>
       <h2>Thermometer</h2>
